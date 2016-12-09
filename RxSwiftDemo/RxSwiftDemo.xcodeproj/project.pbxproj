@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */; };
+		FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */; };
 		FEF593D41DFA53080010D50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF593D31DFA53080010D50C /* AppDelegate.swift */; };
 		FEF593D61DFA53080010D50C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF593D51DFA53080010D50C /* ViewController.swift */; };
 		FEF593D91DFA53080010D50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF593D71DFA53080010D50C /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
+		FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		FEF593D01DFA53080010D50C /* RxSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF593D31DFA53080010D50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEF593D51DFA53080010D50C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */,
+				FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEF593D61DFA53080010D50C /* ViewController.swift in Sources */,
+				FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */,
 				FEF593D41DFA53080010D50C /* AppDelegate.swift in Sources */,
 				FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */,
 			);
