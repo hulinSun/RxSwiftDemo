@@ -42,7 +42,8 @@ class EasyViewController: UIViewController {
 //        generate()
 //        deferred()
 //        interval()
-        timer()
+//        timer()
+        doon()
     }
     
     
@@ -155,18 +156,53 @@ class EasyViewController: UIViewController {
     
     /// 只有在有观察者订阅时，才去创建序列
     func deferred()  {
-        let seq = Observable<Int>.create { (observer) -> Disposable in
-            observer.on(.next(2))
-            observer.onNext(3)
-            observer.onNext(4)
-            let err = NSError(domain: "error", code: 404, userInfo: nil)
-            observer.onError(err)
-           return Disposables.create()
-        }
-        seq.subscribe { (event) in
-            print(event)
-        }.addDisposableTo(DisposeBag())
+//        let seq = Observable<Int>.create { (observer) -> Disposable in
+//            observer.on(.next(2))
+//            observer.onNext(3)
+//            observer.onNext(4)
+//            let err = NSError(domain: "error", code: 404, userInfo: nil)
+//            observer.onError(err)
+//           return Disposables.create()
+//        }
+//        seq.subscribe { (event) in
+//            print(event)
+//        }.addDisposableTo(DisposeBag())
         
+        
+        let disposeBag = DisposeBag()
+        var count = 1
+        
+        let deferredSequence = Observable<String>.deferred {
+            print("Creating \(count)")
+            count += 1
+            
+            return Observable.create { observer in
+                print("Emitting...")
+                observer.onNext("🐶")
+                observer.onNext("🐱")
+                observer.onNext("🐵")
+                return Disposables.create()
+            }
+        }
+        
+        deferredSequence
+            .subscribe(onNext: { print($0) })
+            .addDisposableTo(disposeBag)
+        
+        deferredSequence
+            .subscribe(onNext: { print($0) })
+            .addDisposableTo(disposeBag)
+        
+    }
+    
+    /// 顺便做做 --- 一次一次做的。顺便做一做, 并且只能在subscribe 之前顺便做
+    func doon() {
+        
+        let disposeBag = DisposeBag()
+        Observable.of("🍎", "🍐", "🍊", "🍋")
+            .do(onNext: { print("Intercepted:", $0) }, onError: { print("Intercepted error:", $0) }, onCompleted: { print("Completed")  })
+            .subscribe(onNext: { print($0) })
+            .addDisposableTo(disposeBag)
     }
     
     /// 每个多少秒
@@ -180,7 +216,7 @@ class EasyViewController: UIViewController {
     
     /// 延迟
     func timer()  {
-        
+        //FIXME: 这里为什么执行两次
         print("++++")
         _ = Observable<Int>.timer(2, scheduler: MainScheduler.instance)
         .subscribe({ (event) in
