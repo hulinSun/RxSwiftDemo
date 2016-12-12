@@ -10,6 +10,7 @@
 		FEA42C2B1DFE4CCC006C8AC7 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */; };
 		FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */; };
 		FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */; };
+		FEA42C311DFE8178006C8AC7 /* SchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */; };
 		FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */; };
 		FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */; };
 		FEE72B761DFAAF33005E4533 /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B751DFAAF33005E4533 /* TransformViewController.swift */; };
@@ -68,6 +69,7 @@
 		FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandleViewController.swift; sourceTree = "<group>"; };
+		FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerViewController.swift; sourceTree = "<group>"; };
 		FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
 		FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		FEE72B751DFAAF33005E4533 /* TransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */,
 				FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */,
 				FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */,
+				FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				FEA42C2B1DFE4CCC006C8AC7 /* FilterViewController.swift in Sources */,
 				FEE72B761DFAAF33005E4533 /* TransformViewController.swift in Sources */,
+				FEA42C311DFE8178006C8AC7 /* SchedulerViewController.swift in Sources */,
 				FEF593D61DFA53080010D50C /* ViewController.swift in Sources */,
 				FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */,
 				FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */,
