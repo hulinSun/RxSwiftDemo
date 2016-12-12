@@ -27,7 +27,10 @@ class TransformViewController: UIViewController {
 //        map()
 //        mapWithIdx()
 //        flatmap()
-        scan()
+//        scan()
+//        reduce()
+//        buffer()
+        window()
     }
     
     
@@ -69,7 +72,6 @@ class TransformViewController: UIViewController {
     }
     
     func scan() {
-        
         // scan:应用一个 accumulator (累加) 的方法遍历一个序列，然后返回累加的结果。此外我们还需要一个初始的累加值。实时上这个操作就类似于 Swift 中的 reduce 。
         // 那些返回的结果各个，并不相加 之后返回，只是返回当前这一步骤计算的结果
         Observable.of(1,2,3,4).scan(3, accumulator: { acum ,elem in
@@ -78,5 +80,33 @@ class TransformViewController: UIViewController {
         }).subscribe { (e) in
             print(e)
         }.addDisposableTo(bag)
+    }
+    
+    func reduce() {
+        // 和 scan 非常相似，唯一的不同是， reduce 会在序列结束时才发射最终的累加值。就是说，最终只发射一个最终累加值。
+        Observable.of(1,2,3,4).reduce(2, accumulator: { acum,elem in
+            print("acum = \(acum) , elem = \(elem)")
+            return acum + elem
+        }).subscribe { (e) in
+            print(e) //  只发送一次最终计算出来的值
+        }.addDisposableTo(bag)
+    }
+    
+    func buffer() {
+        // 在特定的线程，定期定量收集序列发射的值，然后发射这些的值的集合。
+        Observable.of(1,2,3,4,5).buffer(timeSpan: 1, count: 2, scheduler: MainScheduler.instance).subscribe { (e) in
+            print(e)
+        }.addDisposableTo(bag)
+    }
+    
+    // Singnal of Singals
+    func window() {
+        // window 和 buffer 非常类似。唯一的不同就是 window 发射的是序列， buffer 发射一系列值。
+        Observable.of(1,2,3,4,5).window(timeSpan: 1, count: 4, scheduler: MainScheduler.instance).subscribe { (e) in
+            print(e)
+            _ = e.element?.subscribe({ (ei) in
+                print(ei)
+            })
+            }.addDisposableTo(bag)
     }
 }
