@@ -36,7 +36,9 @@ class FilterViewController: UIViewController {
 //        singleWithCondtion()
 //        sample()
 //        takeWhile()
-        skipWhile()
+//        skipWhile()
+//        skipWhileWithIndex()
+        skipUntil()
     }
     
     func filter() {
@@ -95,9 +97,9 @@ class FilterViewController: UIViewController {
     }
     
     func skipWhile() {
-        // 但是从前面开始跳过。跳过满足情况的信号。如果第一个就不满足，那么发送全部信号,反正都是从钱凯开始的
+        // 但是从前面开始跳过。跳过满足情况的信号。如果第一个就不满足，(不会有跳过)那么发送全部信号,反正都是从钱凯开始的
         Observable.of(1, 2, 3, 4, 5, 6)
-            .skipWhile { $0 > 4 }
+            .skipWhile { $0 < 4 }
             .subscribe(onNext: { print($0) })
             .addDisposableTo(bag)
     }
@@ -169,5 +171,38 @@ class FilterViewController: UIViewController {
             }
             .addDisposableTo(disposeBag) */
 
+    }
+    
+    func skipWhileWithIndex()  {
+        Observable.of("🐱", "🐰", "🐶", "🐸", "🐷", "🐵")
+            .skipWhileWithIndex { element, index in
+                index < 3
+            }
+            .subscribe(onNext: { print($0) })
+            .addDisposableTo(bag)
+    }
+    
+    func skipUntil()  {
+        
+        // 一直忽略掉 直到 referenceSequence 发送信号。
+        let disposeBag = DisposeBag()
+        
+        let sourceSequence = PublishSubject<String>()
+        let referenceSequence = PublishSubject<String>()
+        
+        sourceSequence
+            .skipUntil(referenceSequence)
+            .subscribe(onNext: { print($0) })
+            .addDisposableTo(disposeBag)
+        
+        sourceSequence.onNext("🐱")
+        sourceSequence.onNext("🐰")
+        sourceSequence.onNext("🐶")
+        
+        referenceSequence.onNext("🔴")
+        
+        sourceSequence.onNext("🐸")
+        sourceSequence.onNext("🐷")
+        sourceSequence.onNext("🐵")
     }
 }

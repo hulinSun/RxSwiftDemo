@@ -225,4 +225,13 @@ class EasyViewController: UIViewController {
             print("----延迟了2秒---")
         })
     }
+    
+    
+    func toArray()  {
+        let disposeBag = DisposeBag()
+        Observable.range(start: 1, count: 10)
+            .toArray()
+            .subscribe { print($0) }
+            .addDisposableTo(disposeBag)
+    }
 }
