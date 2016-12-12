@@ -40,7 +40,7 @@ extension ViewController: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let easy = SchedulerViewController()
+        let easy = RxCocoaViewController()
         present(easy, animated: true, completion: nil)
     }
 }

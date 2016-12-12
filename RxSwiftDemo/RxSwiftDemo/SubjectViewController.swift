@@ -87,6 +87,8 @@ class SubjectViewController: UIViewController {
     
     func behavior()  {
         
+        // 当一个观察者订阅一个 BehaviorSubject ，它会发送原序列最近的那个值（如果原序列还有没发射值那就用一个默认值代替），之后继续发射原序列的值。
+        
         let disposeBag = DisposeBag()
         
         let behaviorSubject = BehaviorSubject(value: "z")

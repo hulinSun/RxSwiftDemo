@@ -11,6 +11,8 @@
 		FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */; };
 		FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */; };
 		FEA42C311DFE8178006C8AC7 /* SchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */; };
+		FEA42C331DFEA60F006C8AC7 /* SumaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C321DFEA60F006C8AC7 /* SumaryViewController.swift */; };
+		FEA42C351DFEA702006C8AC7 /* RxCocoaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C341DFEA702006C8AC7 /* RxCocoaViewController.swift */; };
 		FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */; };
 		FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */; };
 		FEE72B761DFAAF33005E4533 /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE72B751DFAAF33005E4533 /* TransformViewController.swift */; };
@@ -70,6 +72,8 @@
 		FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandleViewController.swift; sourceTree = "<group>"; };
 		FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerViewController.swift; sourceTree = "<group>"; };
+		FEA42C321DFEA60F006C8AC7 /* SumaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumaryViewController.swift; sourceTree = "<group>"; };
+		FEA42C341DFEA702006C8AC7 /* RxCocoaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxCocoaViewController.swift; path = ../RxCocoaViewController.swift; sourceTree = "<group>"; };
 		FEE72B711DFA8BE8005E4533 /* EasyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyViewController.swift; sourceTree = "<group>"; };
 		FEE72B731DFAA34F005E4533 /* SubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		FEE72B751DFAAF33005E4533 /* TransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */,
 				FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */,
 				FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */,
+				FEA42C321DFEA60F006C8AC7 /* SumaryViewController.swift */,
+				FEA42C341DFEA702006C8AC7 /* RxCocoaViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -342,9 +348,11 @@
 				FEA42C311DFE8178006C8AC7 /* SchedulerViewController.swift in Sources */,
 				FEF593D61DFA53080010D50C /* ViewController.swift in Sources */,
 				FEE72B741DFAA34F005E4533 /* SubjectViewController.swift in Sources */,
+				FEA42C331DFEA60F006C8AC7 /* SumaryViewController.swift in Sources */,
 				FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */,
 				FEF593D41DFA53080010D50C /* AppDelegate.swift in Sources */,
 				FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */,
+				FEA42C351DFEA702006C8AC7 /* RxCocoaViewController.swift in Sources */,
 				FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
