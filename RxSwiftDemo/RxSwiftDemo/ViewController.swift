@@ -40,7 +40,7 @@ extension ViewController: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let easy = TransformViewController()
+        let easy = FilterViewController()
         present(easy, animated: true, completion: nil)
     }
 }

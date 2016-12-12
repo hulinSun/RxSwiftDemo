@@ -12,6 +12,7 @@ import RxCocoa
 import RxBlocking
 
 
+/// 变换序列
 class TransformViewController: UIViewController {
 
     let bag = DisposeBag()
