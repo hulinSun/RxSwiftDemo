@@ -34,7 +34,7 @@ class RxCocoaViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-//        KVO()
+        KVO()
         
     }
     
@@ -49,13 +49,14 @@ class RxCocoaViewController: UIViewController {
     func KVO() {
         
         person = Person()
-        person.name = "hony1"
-        person.name = "love1"
-        person.rx.observeWeakly(String.self, #keyPath(Person.name), options: .new).subscribe { (e) in
+        
+        person.name = "love1111"
+        person.rx.observe(String.self, #keyPath(Person.name)).subscribe { (e) in
             print(e)
         }.addDisposableTo(bag)
-        person.name = "hony"
-        person.name = "love"
+        person.name = "love2222"
+        
+        // 默认情况下，只打印最后发射的值
     }
 
     
@@ -191,4 +192,94 @@ class RxCocoaViewController: UIViewController {
             print(e)
         }.addDisposableTo(bag)
     }
+    
+    
+    /// 其他的api
+    func rx_otherUI() {
+        /**
+        extension UIBarButtonItem {
+            public var rx_tap: ControlEvent<Void> {}
+        }
+        
+        extension UISlider {
+            public var rx_value: ControlProperty<Float> {}
+        }
+        
+        extension UISegmentedControl {
+            public var rx_value: ControlProperty<Int> {}
+        }
+        extension UISwitch {
+            public var rx_value: ControlProperty<Bool> {}
+        }
+        extension UINavigationItem {
+            public var rx_title: AnyObserver<String?> {}
+        }
+         
+        extension UIActivityIndicatorView {
+            public var rx_animating: AnyObserver<Bool> {}
+        }
+         */
+    }
+    
+    func rx_tableView()  {
+        
+        /**
+        extension UITableView {
+            public var rx_dataSource: DelegateProxy {}
+         
+            public func rx_setDataSource(dataSource: UITableViewDataSource) -> Disposable {}
+         
+            public func rx_itemsWithCellFactory(source: O)(cellFactory: (UITableView, Int, S.Generator.Element) -> UITableViewCell) -> Disposable {}
+         
+            public func rx_itemsWithCellIdentifier(cellIdentifier: String, cellType: Cell.Type = Cell.self)(source: O)(configureCell: (Int, S.Generator.Element, Cell) -> Void) -> Disposable {}
+            
+            public func rx_itemsWithDataSource(dataSource: DataSource)(source: O) -> Disposable {}
+            
+            public var rx_itemSelected: ControlEvent<NSIndexPath> {}
+            
+            public var rx_itemDeselected: ControlEvent<NSIndexPath> {}
+            
+            public var rx_itemInserted: ControlEvent<NSIndexPath> {}
+            
+            public var rx_itemDeleted: ControlEvent<NSIndexPath> {}
+            
+            public var rx_itemMoved: ControlEvent<ItemMovedEvent> {}
+            
+            // This method only works in case one of the `rx_itemsWith*` methods was used, or data source implements `SectionedViewDataSourceType`
+            public func rx_modelSelected<T>(modelType: T.Type) -> ControlEvent<T> {}
+            
+            // This method only works in case one of the `rx_itemsWith*` methods was used, or data source implements `SectionedViewDataSourceType`
+            public func rx_modelDeselected<T>(modelType: T.Type) -> ControlEvent<T> {}
+            
+        }*/
+    }
+    
+    func rx_collectionView()  {
+        
+        /**
+        extension UICollectionView {
+            
+            public var rx_dataSource: DelegateProxy {}
+            
+            public func rx_setDataSource(dataSource: UICollectionViewDataSource) -> Disposable {}
+            
+            public func rx_itemsWithCellFactory(source: O)(cellFactory: (UICollectionView, Int, S.Generator.Element) -> UICollectionViewCell) -> Disposable {}
+            
+            public func rx_itemsWithCellIdentifier(cellIdentifier: String, cellType: Cell.Type = Cell.self)(source: O)(configureCell: (Int, S.Generator.Element, Cell) -> Void) -> Disposable {}
+            
+            public func rx_itemsWithDataSource(dataSource: DataSource)(source: O) -> Disposable {}
+            
+            public var rx_itemSelected: ControlEvent<NSIndexPath> {}
+            
+            public var rx_itemDeselected: ControlEvent<NSIndexPath> {}
+            
+            // This method only works in case one of the `rx_itemsWith*` methods was used, or data source implements `SectionedViewDataSourceType`
+            public func rx_modelSelected<T>(modelType: T.Type) -> ControlEvent<T> {}
+            
+            // This method only works in case one of the `rx_itemsWith*` methods was used, or data source implements `SectionedViewDataSourceType`
+            public func rx_modelSelected<T>(modelType: T.Type) -> ControlEvent<T> {}
+        }*/
+        
+    }
+        
 }
