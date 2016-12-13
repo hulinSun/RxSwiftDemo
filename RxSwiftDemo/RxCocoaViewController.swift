@@ -88,7 +88,7 @@ class RxCocoaViewController: UIViewController {
     func rx_guesture() {
         let tap = UITapGestureRecognizer()
         tap.rx.event.subscribe { (e) in
-            print("清点")
+            print("tap 轻点")
         }.addDisposableTo(bag)
         view.addGestureRecognizer(tap)
     }
