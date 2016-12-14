@@ -35,7 +35,8 @@ class RxCocoaTestViewController: UIViewController {
         super.viewDidLoad()
 //        buttonTap()
 //        guesture()
-        rxtext()
+//        rxtext()
+        control()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,6 +49,29 @@ class RxCocoaTestViewController: UIViewController {
     }
     
     
+    func control() {
+        
+//        self.slider.rx.controlEvent(.valueChanged).subscribe(onNext: { (e) in
+//            print("点击滑竿，值改变")
+//        }).addDisposableTo(bag)
+        
+            slider.rx.controlEvent(.valueChanged)
+            .map{
+                return "滑竿 \(self.slider.value)"
+            }.bindTo(resLabel.rx.text)
+            .addDisposableTo(bag)
+        
+        
+        self.slider.rx.controlEvent(.valueChanged)
+            .map{ [unowned self] in
+                return self.slider.value >= 0.5 ? true : false
+            }.bindTo(self.switch.rx.value)
+            .addDisposableTo(bag)
+        
+        textView.rx.contentOffset.subscribe { (e) in
+            print(e.element?.y ?? 1)
+        }.addDisposableTo(bag)
+    }
     func rxNotification() {
         // 这个只是监听通知的写法，发出通知还是一般写法
         let i = Notification.Name.UIApplicationDidEnterBackground
