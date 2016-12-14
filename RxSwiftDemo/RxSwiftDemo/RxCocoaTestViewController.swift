@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxBlocking
+import RxDataSources
 
 class RxCocoaTestViewController: UIViewController {
 
@@ -27,6 +28,27 @@ class RxCocoaTestViewController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     
+    
+    var personDatas: [Person] = [
+                                Person(name: "Jack0", age: 22),
+                                Person(name: "Jack1", age: 23),
+                                Person(name: "Jack2", age: 24),
+                                Person(name: "Jack3", age: 25),
+                                Person(name: "Jack4", age: 26),
+                                Person(name: "Jack5", age: 27),
+                                Person(name: "Jack6", age: 28),
+                                Person(name: "Jack7", age: 29),
+                                Person(name: "Jack8", age: 30),
+                                Person(name: "Jack9", age: 31)
+                                    ]
+    
+    var easyDatas = Variable([Person]())
+    
+    fileprivate lazy var tableView: UITableView = {
+        let i = UITableView(frame: .zero, style: .grouped)
+        return i
+    }()
+    
     let bag = DisposeBag()
     
     var person: Person!
@@ -36,7 +58,8 @@ class RxCocoaTestViewController: UIViewController {
 //        buttonTap()
 //        guesture()
 //        rxtext()
-        control()
+//        control()
+        easyTable()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,6 +95,7 @@ class RxCocoaTestViewController: UIViewController {
             print(e.element?.y ?? 1)
         }.addDisposableTo(bag)
     }
+    
     func rxNotification() {
         // 这个只是监听通知的写法，发出通知还是一般写法
         let i = Notification.Name.UIApplicationDidEnterBackground
@@ -157,7 +181,6 @@ class RxCocoaTestViewController: UIViewController {
         _ = Observable.of("控制器释放了控制器释放了控制器释放了")
             .map{$0 + "xixixixixi"}
             .bindTo(textView.rx.text)
-        
     }
     
     func rxtext() {
@@ -180,6 +203,41 @@ class RxCocoaTestViewController: UIViewController {
             print("结束编辑")
         }.addDisposableTo(bag)
     }
+    
+    func easyTable()  {
+        
+        view.subviews.forEach{$0.removeFromSuperview()}
+        view.addSubview(tableView)
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "uitableviewcell")
+        easyDatas.value.append(contentsOf: personDatas)
+        tableView.frame = view.bounds
+        view.addSubview(tableView)
+        
+        easyDatas.asObservable()
+            .bindTo(tableView.rx.items(cellIdentifier: "uitableviewcell", cellType: UITableViewCell.self)){ row , person , cell in
+                cell.textLabel?.text = person.name
+                cell.detailTextLabel?.text = String(person.age)
+        }.addDisposableTo(bag)
+        
+        tableView.rx.itemSelected
+            .subscribe{ e in
+                print(e)
+        }.addDisposableTo(bag)
+    }
+    
+    func advanceTable()  {
+        
+        view.subviews.forEach{$0.removeFromSuperview()}
+        view.addSubview(tableView)
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "uitableviewcell")
+        let dataSource = RxTableViewSectionedReloadDataSource<Person<String, Double>>()
+        
+    }
+    
     
     deinit {
         print("控制器释放了")

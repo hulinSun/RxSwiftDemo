@@ -16,7 +16,17 @@ import RxBlocking
 
 class Person: NSObject {
     var name = "Hony"
-    let age = 25
+    var age = 25
+    
+    init(name: String, age: Int){
+        self.name = name
+        self.age = age
+        super.init()
+    }
+    override init() {
+        self.name = "Hony"
+        self.age = 23
+    }
 }
 
 let bag  = DisposeBag()
