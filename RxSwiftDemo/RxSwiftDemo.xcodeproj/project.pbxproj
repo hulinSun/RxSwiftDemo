@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE56B2881E00E2BA00D24987 /* RxCocoaTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE56B2861E00E2BA00D24987 /* RxCocoaTestViewController.swift */; };
+		FE56B2891E00E2BA00D24987 /* RxCocoaTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE56B2871E00E2BA00D24987 /* RxCocoaTestViewController.xib */; };
 		FEA42C2B1DFE4CCC006C8AC7 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */; };
 		FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */; };
 		FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FE56B2861E00E2BA00D24987 /* RxCocoaTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCocoaTestViewController.swift; sourceTree = "<group>"; };
+		FE56B2871E00E2BA00D24987 /* RxCocoaTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RxCocoaTestViewController.xib; sourceTree = "<group>"; };
 		FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandleViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				FEA42C301DFE8178006C8AC7 /* SchedulerViewController.swift */,
 				FEA42C321DFEA60F006C8AC7 /* SumaryViewController.swift */,
 				FEA42C341DFEA702006C8AC7 /* RxCocoaViewController.swift */,
+				FE56B2861E00E2BA00D24987 /* RxCocoaTestViewController.swift */,
+				FE56B2871E00E2BA00D24987 /* RxCocoaTestViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE56B2891E00E2BA00D24987 /* RxCocoaTestViewController.xib in Resources */,
 				FEF593DE1DFA53080010D50C /* LaunchScreen.storyboard in Resources */,
 				FEF593DB1DFA53080010D50C /* Assets.xcassets in Resources */,
 				FEF593D91DFA53080010D50C /* Main.storyboard in Resources */,
@@ -343,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE56B2881E00E2BA00D24987 /* RxCocoaTestViewController.swift in Sources */,
 				FEA42C2B1DFE4CCC006C8AC7 /* FilterViewController.swift in Sources */,
 				FEE72B761DFAAF33005E4533 /* TransformViewController.swift in Sources */,
 				FEA42C311DFE8178006C8AC7 /* SchedulerViewController.swift in Sources */,

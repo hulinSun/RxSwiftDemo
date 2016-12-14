@@ -26,7 +26,10 @@ public enum TScheduler {
         case .serial(let QOS):
             return SerialDispatchQueueScheduler.init(qos: DispatchQoS.init(qosClass: QOS, relativePriority: 0))
         case .concurrent:
-            return ConcurrentMainScheduler.instance
+//            return ConcurrentMainScheduler.instance
+            let i = DispatchQoS.QoSClass.background
+            let qos = DispatchQoS.init(qosClass: i, relativePriority: 0)
+            return ConcurrentDispatchQueueScheduler.init(qos: qos)
         case .operation(let queue):
             return OperationQueueScheduler(operationQueue: queue)
         }

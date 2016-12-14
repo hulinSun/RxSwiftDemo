@@ -35,7 +35,6 @@ class RxCocoaViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         KVO()
-        
     }
     
     // 释放的钩子

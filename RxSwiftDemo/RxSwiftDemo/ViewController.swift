@@ -40,7 +40,7 @@ extension ViewController: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let easy = RxCocoaViewController()
+        let easy = RxCocoaTestViewController()
         present(easy, animated: true, completion: nil)
     }
 }
