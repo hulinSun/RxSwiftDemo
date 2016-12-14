@@ -14,6 +14,7 @@ import RxDataSources
 
 class RxCocoaTestViewController: UIViewController {
 
+    
     @IBOutlet weak var resLabel: UILabel!
     
     @IBOutlet weak var label: UILabel!
@@ -60,6 +61,7 @@ class RxCocoaTestViewController: UIViewController {
 //        rxtext()
 //        control()
         easyTable()
+//        advanceTable()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -219,29 +221,104 @@ class RxCocoaTestViewController: UIViewController {
             .bindTo(tableView.rx.items(cellIdentifier: "uitableviewcell", cellType: UITableViewCell.self)){ row , person , cell in
                 cell.textLabel?.text = person.name
                 cell.detailTextLabel?.text = String(person.age)
+                cell.accessoryType =  (row % 2 == 0) ? .checkmark : .detailButton
         }.addDisposableTo(bag)
         
         tableView.rx.itemSelected
             .subscribe{ e in
                 print(e)
         }.addDisposableTo(bag)
+        
+        tableView.rx.modelSelected(Person.self).subscribe { (p) in
+            print(p.element?.name ?? "haha ")
+        }.addDisposableTo(bag)
+        
+        tableView.rx.itemAccessoryButtonTapped.subscribe { (e) in
+            print("点击了详细按钮")
+        }.addDisposableTo(bag)
+        
+        
     }
+    
+    
+    
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Double>>()
     
     func advanceTable()  {
         
+        let dataSource = self.dataSource
+        
         view.subviews.forEach{$0.removeFromSuperview()}
         view.addSubview(tableView)
+        tableView.frame = self.view.bounds
         tableView.delegate = nil
         tableView.dataSource = nil
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "uitableviewcell")
-        let dataSource = RxTableViewSectionedReloadDataSource<Person<String, Double>>()
         
+        let items = Observable.just([
+            SectionModel(model: "First section", items: [
+                1.0,
+                2.0,
+                3.0
+                ]),
+            SectionModel(model: "Second section", items: [
+                1.0,
+                2.0,
+                3.0
+                ]),
+            SectionModel(model: "Third section", items: [
+                1.0,
+                2.0,
+                3.0
+                ])
+            ])
+        
+        dataSource.configureCell = { (_, tv, indexPath, element) in
+            let cell = tv.dequeueReusableCell(withIdentifier: "uitableviewcell")!
+            cell.textLabel?.text = "\(element) @ row \(indexPath.row)"
+            return cell
+        }
+        
+        items
+            .bindTo(tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(bag)
+        
+        tableView.rx
+            .itemSelected
+            .map { indexPath in
+                return (indexPath, dataSource[indexPath])
+            }
+            .subscribe(onNext: { indexPath, model in
+                print("点击了\(indexPath.section) 组 第\(indexPath.row)行")
+            })
+            .addDisposableTo(bag)
+        
+        tableView.rx
+            .setDelegate(self)
+            .addDisposableTo(bag)
+
     }
     
     
     deinit {
         print("控制器释放了")
     }
+}
+
+extension RxCocoaTestViewController: UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = dataSource[section].model
+        label.backgroundColor = .red
+        return label
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66
+    }
 }
