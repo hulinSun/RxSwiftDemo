@@ -60,8 +60,8 @@ class RxCocoaTestViewController: UIViewController {
 //        guesture()
 //        rxtext()
 //        control()
-        easyTable()
-//        advanceTable()
+//        easyTable()
+        advanceTable()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -296,6 +296,10 @@ class RxCocoaTestViewController: UIViewController {
         tableView.rx
             .setDelegate(self)
             .addDisposableTo(bag)
+        
+        tableView.rx.contentOffset.subscribe { (e) in
+            print("tableview 滚动 \(e.element?.y)")
+        }.addDisposableTo(bag)
 
     }
     
