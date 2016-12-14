@@ -33,16 +33,28 @@ class RxCocoaTestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonTap()
+//        buttonTap()
+//        guesture()
+        rxtext()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 //        KVO()
 //        rxdelloc()
-        session()
+//        session()
+//        rxNotification()
+//        bind()
     }
     
+    
+    func rxNotification() {
+        // 这个只是监听通知的写法，发出通知还是一般写法
+        let i = Notification.Name.UIApplicationDidEnterBackground
+        NotificationCenter.default.rx.notification(i, object: "xixi" as AnyObject?).subscribe { (e) in
+            print(e)
+        }.addDisposableTo(bag)
+    }
     
     func session()  {
         
@@ -88,11 +100,22 @@ class RxCocoaTestViewController: UIViewController {
     }
     
     func guesture() {
-        let tap = UITapGestureRecognizer()
-        tap.rx.event.subscribe { (e) in
-            print("点击了控制器的view")
-            }.addDisposableTo(bag)
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer()
+//        tap.rx.event.subscribe { (e) in
+//            print("点击了控制器的view")
+//            }.addDisposableTo(bag)
+//        view.addGestureRecognizer(tap)
+        
+        let pan = UIPanGestureRecognizer()
+        pan.rx.event.subscribe { [unowned self](e) in
+            
+            // element 是传过来的对象
+            guard let g = e.element else{return}
+            self.resLabel.text = "pan---"
+            print(g.location(in: g.view))
+            
+        }.addDisposableTo(bag)
+        view.addGestureRecognizer(pan)
     }
     
     func KVO() {
@@ -104,6 +127,34 @@ class RxCocoaTestViewController: UIViewController {
         }.addDisposableTo(bag)
         person.name = "可惜你早已远去"
         // 订阅前最后改变的值
+    }
+    
+    func bind()  {
+        _ = Observable.of("控制器释放了控制器释放了控制器释放了")
+            .map{$0 + "xixixixixi"}
+            .bindTo(textView.rx.text)
+        
+    }
+    
+    func rxtext() {
+        
+        // orEmpty  过滤掉可选
+        field.rx.text.orEmpty
+            .subscribe { (e) in
+                print(e)
+            }.addDisposableTo(bag)
+        
+        textView.rx.text.orEmpty
+            .subscribe { (e) in
+                print(e)
+            }.addDisposableTo(bag)
+        
+        textView.rx.didBeginEditing.subscribe { (e) in
+            print("开始编辑")
+        }.addDisposableTo(bag)
+        textView.rx.didEndEditing.subscribe { (e) in
+            print("结束编辑")
+        }.addDisposableTo(bag)
     }
     
     deinit {
