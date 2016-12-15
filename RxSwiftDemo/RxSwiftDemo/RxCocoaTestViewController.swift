@@ -12,6 +12,9 @@ import RxCocoa
 import RxBlocking
 import RxDataSources
 
+
+/// 好文连接： http://www.jianshu.com/p/2a361138a7d5
+
 class RxCocoaTestViewController: UIViewController {
 
     
