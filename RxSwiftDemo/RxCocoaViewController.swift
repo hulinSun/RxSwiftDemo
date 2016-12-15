@@ -203,6 +203,16 @@ class RxCocoaViewController: UIViewController {
     }
     
     
+    func rx_imgPicker()  {
+        
+        /**
+        extension UIImagePickerController {
+            public var rx_didFinishPickingMediaWithInfo: Observable<[String : AnyObject]> {}
+            public var rx_didCancel: Observable<()> {}
+        }*/
+        
+    }
+    
     /// 其他的api
     func rx_otherUI() {
         /**
@@ -290,5 +300,6 @@ class RxCocoaViewController: UIViewController {
         }*/
         
     }
-        
+    
+    
 }
