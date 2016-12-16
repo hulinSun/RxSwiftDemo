@@ -97,6 +97,47 @@ class SchedulerViewController: UIViewController {
         // MainScheduler 有一个很有用的功能：
         // public class func ensureExecutingOnScheduler()
         //你可以在需要保证代码一定执行在主线程的地方调用 MainScheduler.ensureExecutingOnScheduler() ，特别是在线程切换来切换去的情况下，或者是调用其他的库，我们不确定当前是否在执行在主线程。毕竟 UI 的更新还是要在主线程执行的。
+
+        /**
+        someObservable
+            .doOneThing()   1
+            .observeOn(MainRouteScheduler.instance) 2
+            .subscribeOn(OtherScheduler.instance) 3
+            .subscribeNext { 4
+                ......
+            }
+            .addDisposableTo(disposeBag)
+         
+         1.所有动作都发生在当前的默认线程
+         2.observeOn转换线程到主线程，下面所有的操作都是在主线程中
+         3.subscribeOn规定动作一开始不是发生在默认线程了，而是在OtherScheduler了。
+         4.如果我们之前没有调用observeOn，那么这边会在OtherScheduler发生，但是我们前面调用了observeOn，所以这个动作还是会在主线程中调用。
+         总结一下：subscribeOn只是影响事件链开始默认的线程，而observeOn规定了下一步动作发生在哪个线程中。
+         */
+        
+        
+        /**
+         * observeOn()和subscribeOn()
+         * subscribeOn()设置起点在哪个线程，observeOn()设置了后续工作在哪个线程
+         */
+        
+//        map函数执行了两遍，但是有些时候我不需要map函数里的东西执行两遍，比如map函数里面如果执行的是网络请求，我只需要一次请求结果供大家使用就行了，多余的请求没啥用，浪费时间。所以这时候就需要shareReplay(1)
+        
+        /**drive方法只能在Driver序列中使用，Driver有以下特点：1 Driver序列不允许发出error，2 Driver序列的监听只会在主线程中。所以Driver是转为UI绑定量身打造的东西。以下情况你可以使用Driver替换BindTo:
+        
+        不能发出error
+        在主线程中监听
+        共享事件流 */
+        
+        /**
+        extension Reactive where Base: UITextField {
+            var inputEnabled: UIBindingObserver<Base, Result> {
+                return UIBindingObserver(UIElement: base) { textFiled, result in
+                    textFiled.isEnabled = result.isValid
+                }
+            }
+        }*/
+        
     }
 
 }
