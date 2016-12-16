@@ -129,6 +129,7 @@ class SchedulerViewController: UIViewController {
         在主线程中监听
         共享事件流 */
         
+        
         /**
         extension Reactive where Base: UITextField {
             var inputEnabled: UIBindingObserver<Base, Result> {
@@ -137,6 +138,7 @@ class SchedulerViewController: UIViewController {
                 }
             }
         }*/
+        
         
     }
 
