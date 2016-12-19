@@ -12,6 +12,7 @@
 		FE56B2901E012F8400D24987 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE56B28F1E012F8400D24987 /* RxDataSources.framework */; };
 		FE56B2911E01366400D24987 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE56B28F1E012F8400D24987 /* RxDataSources.framework */; };
 		FE56B2921E01366400D24987 /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE56B28F1E012F8400D24987 /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FE5A12811E07D6E7005C6660 /* RxProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5A12801E07D6E7005C6660 /* RxProView.swift */; };
 		FEA42C2B1DFE4CCC006C8AC7 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */; };
 		FEA42C2D1DFE6F56006C8AC7 /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */; };
 		FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */; };
@@ -77,6 +78,7 @@
 		FE56B2861E00E2BA00D24987 /* RxCocoaTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCocoaTestViewController.swift; sourceTree = "<group>"; };
 		FE56B2871E00E2BA00D24987 /* RxCocoaTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RxCocoaTestViewController.xib; sourceTree = "<group>"; };
 		FE56B28F1E012F8400D24987 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxDataSources.framework; sourceTree = "<group>"; };
+		FE5A12801E07D6E7005C6660 /* RxProView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxProView.swift; sourceTree = "<group>"; };
 		FEA42C2A1DFE4CCC006C8AC7 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		FEA42C2C1DFE6F56006C8AC7 /* CombineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		FEA42C2E1DFE7795006C8AC7 /* ErrorHandleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandleViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		FE56B28E1E012CBA00D24987 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE5A12801E07D6E7005C6660 /* RxProView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				FEE72B721DFA8BE8005E4533 /* EasyViewController.swift in Sources */,
 				FEA42C351DFEA702006C8AC7 /* RxCocoaViewController.swift in Sources */,
 				FEA42C2F1DFE7795006C8AC7 /* ErrorHandleViewController.swift in Sources */,
+				FE5A12811E07D6E7005C6660 /* RxProView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
