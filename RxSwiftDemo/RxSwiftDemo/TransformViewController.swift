@@ -47,7 +47,8 @@ class TransformViewController: UIViewController {
     
     func mapWithIdx()  {
         ///注意第一个是序列发射的值，第二个是 index 。
-        Observable.of(1,2,3).mapWithIndex { item , idx in
+        Observable.of(1,2,3)
+            .mapWithIndex { item , idx in
             item * idx
         }.subscribe { print($0) }
             .addDisposableTo(DisposeBag())

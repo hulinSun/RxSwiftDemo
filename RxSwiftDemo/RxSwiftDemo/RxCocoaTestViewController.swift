@@ -89,6 +89,8 @@ class RxCocoaTestViewController: UIViewController {
             }.bindTo(resLabel.rx.text)
             .addDisposableTo(bag)
         
+        Observable.of(0.6).bindTo(slider.rx.value).addDisposableTo(bag)
+        
         
         self.slider.rx.controlEvent(.valueChanged)
             .map{ [unowned self] in
@@ -220,6 +222,10 @@ class RxCocoaTestViewController: UIViewController {
         tableView.frame = view.bounds
         view.addSubview(tableView)
         
+//        easyDatas.asDriver()
+//            .drive(tableView.rx.items(cellIdentifier: "", cellType: UITableViewCell.self)){_ , _ ,_  in
+//        }.addDisposableTo(bag)
+        
         easyDatas.asObservable()
             .bindTo(tableView.rx.items(cellIdentifier: "uitableviewcell", cellType: UITableViewCell.self)){ row , person , cell in
                 cell.textLabel?.text = person.name
@@ -239,7 +245,6 @@ class RxCocoaTestViewController: UIViewController {
         tableView.rx.itemAccessoryButtonTapped.subscribe { (e) in
             print("点击了详细按钮")
         }.addDisposableTo(bag)
-        
         
     }
     
@@ -305,7 +310,6 @@ class RxCocoaTestViewController: UIViewController {
         }.addDisposableTo(bag)
 
     }
-    
     
     deinit {
         print("控制器释放了")

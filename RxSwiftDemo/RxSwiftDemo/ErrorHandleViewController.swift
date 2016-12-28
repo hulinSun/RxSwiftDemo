@@ -61,6 +61,7 @@ class ErrorHandleViewController: UIViewController {
         // 1 2 4 100 200 300 400 后面跟上的。也会包括之前的值,但是失败的值且以后得不会包括
         let sequenceThatFails = PublishSubject<Int>()
         let recoverySequence = Observable.of(100, 200, 300, 400)
+        
         _ = sequenceThatFails
             .catchError { error in
                 return recoverySequence

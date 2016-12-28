@@ -26,7 +26,7 @@ class EasyViewController: UIViewController {
     deferred 只有在有观察者订阅时，才去创建序列
     empty 创建一个空的序列，只发射一个 .Completed
     error 创建一个发射 error 终止的序列
-     FROM
+    FROM
     toObservable 使用 SequenceType 创建序列
     interval 创建一个每隔一段时间就发射的递增序列
     never 不创建序列，也不发送通知

@@ -21,7 +21,6 @@ import RxDataSources
 class RxProView: UIView {
     
     weak var delegate: RxProViewProtocol?
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         delegate?.log?()
@@ -31,11 +30,6 @@ class RxProView: UIView {
 extension RxProView {
  
 }
-
-
-
-
-
 
 
 /******************************************************/

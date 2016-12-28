@@ -88,7 +88,7 @@ class RxCocoaViewController: UIViewController {
     
     // 通知
     func notification() {
-        let name = Notification.Name.init("SomeNotificationName")
+        let name = Notification.Name("SomeNotificationName")
         NotificationCenter.default.rx.notification(name, object: person).subscribe { (e) in
             print(e)
         }.addDisposableTo(bag)
@@ -96,6 +96,7 @@ class RxCocoaViewController: UIViewController {
     
     // 手势
     func rx_guesture() {
+        
         let tap = UITapGestureRecognizer()
         tap.rx.event.subscribe { (e) in
             print("tap 轻点")
@@ -152,6 +153,7 @@ class RxCocoaViewController: UIViewController {
         
 //        public var rx_enabled: ObserverOf<Bool> {}
         _ = control.rx.isEnabled
+        Observable<Bool>.of(true).bindTo(control.rx.isEnabled).addDisposableTo(bag)
     }
     
     // UIButton - tap
@@ -169,6 +171,8 @@ class RxCocoaViewController: UIViewController {
         textfild.rx.text.orEmpty.subscribe { (e) in
             print(e)
         }.addDisposableTo(bag)
+        
+
     }
     
     
@@ -187,6 +191,8 @@ class RxCocoaViewController: UIViewController {
         picker.rx.date.subscribe { (e) in
             print(e)
         }.addDisposableTo(bag)
+        
+        Variable(Date()).asDriver().drive(picker.rx.date).addDisposableTo(bag)
     }
     
     func rx_scrollview()  {
@@ -210,7 +216,6 @@ class RxCocoaViewController: UIViewController {
             public var rx_didFinishPickingMediaWithInfo: Observable<[String : AnyObject]> {}
             public var rx_didCancel: Observable<()> {}
         }*/
-        
     }
     
     /// 其他的api
