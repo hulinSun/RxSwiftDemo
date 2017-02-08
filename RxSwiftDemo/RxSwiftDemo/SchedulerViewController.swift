@@ -24,12 +24,12 @@ public enum TScheduler {
         case .main:
             return MainScheduler.instance
         case .serial(let QOS):
-            return SerialDispatchQueueScheduler.init(qos: DispatchQoS.init(qosClass: QOS, relativePriority: 0))
+            return SerialDispatchQueueScheduler(qos: DispatchQoS(qosClass: QOS, relativePriority: 0))
         case .concurrent:
 //            return ConcurrentMainScheduler.instance
             let i = DispatchQoS.QoSClass.background
-            let qos = DispatchQoS.init(qosClass: i, relativePriority: 0)
-            return ConcurrentDispatchQueueScheduler.init(qos: qos)
+            let qos = DispatchQoS(qosClass: i, relativePriority: 0)
+            return ConcurrentDispatchQueueScheduler(qos: qos)
         case .operation(let queue):
             return OperationQueueScheduler(operationQueue: queue)
         }
@@ -66,7 +66,7 @@ class SchedulerViewController: UIViewController {
             .observeOn(scheduler: .main) // // 切换到主线程
             .bindTo(imageView.rx.image) //  // 在主线程设置 `image`
             .addDisposableTo(DisposeBag())
-
+        
     }
     
     

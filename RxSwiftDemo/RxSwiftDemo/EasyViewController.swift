@@ -136,7 +136,6 @@ class EasyViewController: UIViewController {
             print(event)
         }.addDisposableTo(DisposeBag())
         
-        
         Observable.from(["🐶 -", "🐱", "🐭", "🐹 +"])
             .subscribe(onNext: { print($0) })
             .addDisposableTo(DisposeBag())

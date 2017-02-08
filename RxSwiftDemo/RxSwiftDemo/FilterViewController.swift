@@ -54,6 +54,7 @@ class FilterViewController: UIViewController {
         }, onDisposed: {
             print("disposed")
         }).addDisposableTo(bag)
+        
     }
     
     func distinctUntilChanged()  {
